@@ -1,0 +1,1880 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "TSEnterpriseWebApi - TS Enterprise Service layer",
+        "description": "WebApi Version Group: v1_IntegrationPD - 10 Endpoint",
+        "version": "v1_IntegrationPD"
+    },
+    "paths": {
+        "/api/v1/{environment}/PD/Progetto/{id}": {
+            "get": {
+                "tags": ["Progetto"],
+                "summary": "Get by ID",
+                "description": "Get an object of type corresponding the requested id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id to get the object",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dlevel",
+                        "in": "query",
+                        "description": "Serialization level",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dlevelkey",
+                        "in": "query",
+                        "description": "Serialization level key",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "The object of type requested",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectPDDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectPDDTO"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "If object not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Progetto"],
+                "summary": "Update",
+                "description": "Updating an object of type",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "force",
+                        "in": "query",
+                        "description": "The warning/s code to bypass (separated by ‘,’) during the execution",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "_op",
+                        "in": "query",
+                        "description": "Set 'reload', if you want the DTO updated in the response request, otherwise will be returned null value",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Object of type to update",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProjectPDDTO"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProjectPDDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "If object has been updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectPDDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectPDDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "If the object has not been updated: the content response contains the validation messages"
+                    },
+                    "404": {
+                        "description": "If object not found"
+                    },
+                    "409": {
+                        "description": "If object has not been updated due to business rules violation: the content response contains the validation messages",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Progetto"],
+                "summary": "Delete",
+                "description": "Deleting object of type ",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "If object has been deleted"
+                    },
+                    "400": {
+                        "description": "if object has not been deleted: the content response contains the validation messages"
+                    },
+                    "404": {
+                        "description": "If object not found"
+                    },
+                    "409": {
+                        "description": "If object has not been deleted due to business rules violation: the content response contains the validation messages",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": ["Progetto"],
+                "summary": "Update partial",
+                "description": "Patching an object of type",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "force",
+                        "in": "query",
+                        "description": "The warning/s code to bypass (separated by ‘,’) during the execution",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "_op",
+                        "in": "query",
+                        "description": "Set 'reload', if you want the DTO updated in the response request",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Object of type to patch",
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        },
+                        "application/xml": {
+                            "schema": {}
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "If object has been updated"
+                    },
+                    "400": {
+                        "description": "If the object has not been patched: the content response contains the validation messages"
+                    },
+                    "404": {
+                        "description": "If object not found"
+                    },
+                    "409": {
+                        "description": "If object has not been patched due to business rules violation: the content response contains the validation messages",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/{environment}/PD/Progetto": {
+            "get": {
+                "tags": ["Progetto"],
+                "summary": "Get new",
+                "description": "Get an empty object of type corresponding",
+                "parameters": [
+                    {
+                        "name": "_op",
+                        "in": "query",
+                        "description": "The value must be 'new'",
+                        "required": true,
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "The empty object of type requested",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectPDDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectPDDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Progetto"],
+                "summary": "Create",
+                "description": "Creating new object of type",
+                "parameters": [
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Object of type to create",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProjectPDDTO"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProjectPDDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "201": {
+                        "description": "If object has been created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectPDDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectPDDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "If the object has not been created: the content response contains validation messages"
+                    },
+                    "409": {
+                        "description": "If object has not been created due to business rules violation: the content response contains validation messages",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/{environment}/PD/Progetto/validate": {
+            "post": {
+                "tags": ["Progetto"],
+                "summary": "Validate",
+                "description": "Validation of object of type",
+                "parameters": [
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Object of type to validate",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProjectPDDTO"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProjectPDDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "If object is VALID: the content response does NOT contain validation messages"
+                    },
+                    "400": {
+                        "description": "If no object to validate was supplied"
+                    },
+                    "409": {
+                        "description": "If object is NOT VALID: the content response contains validation messages",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/{environment}/PD/Progetto/validateProperties": {
+            "post": {
+                "tags": ["Progetto"],
+                "summary": "Validation of one on more properties of Type",
+                "description": "Validation of object of type",
+                "parameters": [
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": " - One or more key-value pairs where the key is the DTO property name and the value is value to validate * REQUIRED<br> - The id of an existing object to validate properties, or '' if the object does not exist yet <br>",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string",
+                                "properties": {
+                                    "propertyName=Value&id=Value": {
+                                        "type": "string",
+                                        "format": "string"
+                                    }
+                                },
+                                "example": "propertyName=Value&id=Value"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "If object is VALID: the content response does NOT contain validation messages",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "If no object to validate was supplied"
+                    },
+                    "409": {
+                        "description": "If object is NOT VALID: the content response contains validation messages",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/{environment}/PD/Progetto/search": {
+            "post": {
+                "tags": ["Progetto"],
+                "summary": "Search",
+                "description": "Search among object of type",
+                "parameters": [
+                    {
+                        "name": "loadEntireDomain",
+                        "in": "query",
+                        "description": "Specify 'loadEntireDomain=true' if you want all the aggregate",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "getTotalCount",
+                        "in": "query",
+                        "description": "Specify 'getTotalCount=true' if you want the total number of elements",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Search criteria to apply",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SearchDTO"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SearchDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "The list of object of type as result of search",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectPDDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectPDDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "If the search criteria is not supplied"
+                    }
+                }
+            }
+        },
+        "/api/v1/{environment}/PD/Progetto/read": {
+            "post": {
+                "tags": ["Progetto"],
+                "summary": "Read",
+                "description": "Read among object of type",
+                "parameters": [
+                    {
+                        "name": "dlevel",
+                        "in": "query",
+                        "description": "Serialization level",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dlevelkey",
+                        "in": "query",
+                        "description": "Serialization level key",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Search criteria to apply",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/SearchElementDTO"
+                                }
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/SearchElementDTO"
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "The object of type requested",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectPDDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectPDDTO"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "If object not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "NodePDDTO": {
+                "required": ["alivaCg28", "codNodo", "codProgPd68", "dittaCg18", "flgContribinteg", "flgContribprev", "flgIvarid", "flgRitacc", "importo"],
+                "type": "object",
+                "properties": {
+                    "alivaCg28": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "PD0C_ALIVA_CG28 - Codice aliquota IVA"
+                    },
+                    "codNodo": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "PD0C_CODNODO - Codice Nodo"
+                    },
+                    "codProgPd68": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "PD0C_CODPROG_PD68 - Codice progetto"
+                    },
+                    "costoeffettivo": {
+                        "type": "number",
+                        "description": "PD0C_COSTOEFFETTIVO - Costo effettivo",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "costoordinato": {
+                        "type": "number",
+                        "description": "PD0C_COSTOORDINATO - Costoordinato",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "costoprevcalc": {
+                        "type": "number",
+                        "description": "PD0C_COSTOPREVCALC - Costo preventivo calcolato",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "costoprevman": {
+                        "type": "number",
+                        "description": "PD0C_COSTOPREVMAN - Costo preventivo manuale",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "datafineff": {
+                        "type": "string",
+                        "description": "PD0C_DATAFINEFF - Data fine effettiva",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "datafinpian": {
+                        "type": "string",
+                        "description": "PD0C_DATAFINPIAN - Data fine pianificata",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "datafinprev": {
+                        "type": "string",
+                        "description": "PD0C_DATAFINPREV - Data fine prevista",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "datainizeff": {
+                        "type": "string",
+                        "description": "PD0C_DATAINIZEFF - Data inizio effettiva",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "datainizpian": {
+                        "type": "string",
+                        "description": "PD0C_DATAINIZPIAN - Data inizio pianificata",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "datainizprev": {
+                        "type": "string",
+                        "description": "PD0C_DATAINIZPREV - Data inizio prevista",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "descr": {
+                        "type": "string",
+                        "description": "PD0C_DESCR - Descrizione",
+                        "nullable": true
+                    },
+                    "descrestesa": {
+                        "type": "string",
+                        "description": "PD0C_DESCRESTESA - Descrizione aggiuntiva",
+                        "nullable": true
+                    },
+                    "dittaCg18": {
+                        "type": "number",
+                        "description": "PD0C_DITTA_CG18 - Ditta",
+                        "format": "double"
+                    },
+                    "duratagg": {
+                        "type": "number",
+                        "description": "PD0C_DURATAGG - Durata in giorni",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "flgContribinteg": {
+                        "type": "integer",
+                        "description": "PD0C_FLGCONTRIBINTEG - Contributo integrativo",
+                        "format": "int32"
+                    },
+                    "flgContribprev": {
+                        "type": "integer",
+                        "description": "PD0C_FLGCONTRIBPREV - Contributo previdenziale",
+                        "format": "int32"
+                    },
+                    "flgEsclscpiede": {
+                        "type": "number",
+                        "description": "PD0C_FLGESCLSCPIEDE - FlgEsclscpiede",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "flgIvacomp": {
+                        "type": "number",
+                        "description": "PD0C_FLGIVACOMP - FlgIvacomp",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "flgIvarid": {
+                        "type": "number",
+                        "description": "PD0C_FLGIVARID - FlgIvarid",
+                        "format": "double"
+                    },
+                    "flgRitacc": {
+                        "type": "integer",
+                        "description": "PD0C_FLGRITACC - FlgRitacc",
+                        "format": "int32"
+                    },
+                    "importo": {
+                        "type": "number",
+                        "description": "PD0C_IMPORTO - Importo",
+                        "format": "double"
+                    },
+                    "importoval": {
+                        "type": "number",
+                        "description": "PD0C_IMPORTOVAL - Importo in valuta",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "impprevcalc": {
+                        "type": "number",
+                        "description": "PD0C_IMPPREVCALC - Importo preventivo calcolato",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "percmargine": {
+                        "type": "number",
+                        "description": "PD0C_PERCMARGINE - % margine calcolo prezzo",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "valutaCg08": {
+                        "type": "string",
+                        "description": "PD0C_VALUTA_CG08 - Codice valuta",
+                        "nullable": true
+                    },
+                    "projectType": {
+                        "$ref": "#/components/schemas/ProjectTypePDDTO"
+                    },
+                    "statoPd": {
+                        "$ref": "#/components/schemas/ProjectStatusPDDTO"
+                    },
+                    "extensionData": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StringObjectKeyValuePair"
+                        },
+                        "nullable": true
+                    },
+                    "additionalData": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "PD0C_NODO - Nodo<br>Proprietà chiave:<ul><li><b>CodNodo</b></li><li><b>CodProgPd68</b></li><li><b>DittaCg18</b></li></ul>"
+            },
+            "ProjectPDDTO": {
+                "required": ["codProg", "dittaCg18"],
+                "type": "object",
+                "properties": {
+                    "codCausalePd61": {
+                        "type": "string",
+                        "description": "PD68_CODCAUSALE_PD61 - Causale",
+                        "nullable": true
+                    },
+                    "codCliCg44": {
+                        "type": "number",
+                        "description": "PD68_CODCLI_CG44 - Codice cliente",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "codDestinMg22": {
+                        "type": "string",
+                        "description": "PD68_CODDESTIN_MG22 - CodDestinMg22",
+                        "nullable": true
+                    },
+                    "codiceivaCg28": {
+                        "type": "string",
+                        "description": "PD68_CODICEIVA_CG28 - CodiceivaCg28",
+                        "nullable": true
+                    },
+                    "codProg": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "PD68_CODPROG - Codice progetto"
+                    },
+                    "datafinlav": {
+                        "type": "string",
+                        "description": "PD68_DATAFINLAV - Data fine lav.",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "datainlav": {
+                        "type": "string",
+                        "description": "PD68_DATAINLAV - Data inizio lav.",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "descrprog": {
+                        "type": "string",
+                        "description": "PD68_DESCRPROG - Descrizione",
+                        "nullable": true
+                    },
+                    "dittaCg18": {
+                        "type": "number",
+                        "description": "PD68_DITTA_CG18 - Ditta",
+                        "format": "double"
+                    },
+                    "ragsocCg16": {
+                        "type": "string",
+                        "description": "PD68_RAGSOC_CG16 - Ragione sociale",
+                        "nullable": true
+                    },
+                    "tipoprog": {
+                        "type": "number",
+                        "description": "PD68_TIPOPROG - Tipoprog",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "idExtendedAttributeEntity": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "idExtendedAttributeSubEntity": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nodi": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/NodePDDTO"
+                        },
+                        "nullable": true
+                    },
+                    "projectType": {
+                        "$ref": "#/components/schemas/ProjectTypePDDTO"
+                    },
+                    "statoPd": {
+                        "$ref": "#/components/schemas/ProjectStatusPDDTO"
+                    },
+                    "subProjectPD": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SubProjectPDDTO"
+                        },
+                        "nullable": true
+                    },
+                    "extensionData": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StringObjectKeyValuePair"
+                        },
+                        "nullable": true
+                    },
+                    "additionalData": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "PD68_PROGETTI - Progetto<br>Proprietà chiave:<ul><li><b>CodProg</b></li><li><b>DittaCg18</b></li></ul>"
+            },
+            "ProjectStatusPDDTO": {
+                "required": ["codice", "dittaCg18", "indStato"],
+                "type": "object",
+                "properties": {
+                    "codice": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "PD1E_CODICE - Codice Stato"
+                    },
+                    "descr": {
+                        "type": "string",
+                        "description": "PD1E_DESCR - Descrizione",
+                        "nullable": true
+                    },
+                    "dittaCg18": {
+                        "type": "number",
+                        "description": "PD1E_DITTA_CG18 - Ditta",
+                        "format": "double"
+                    },
+                    "flgAssist": {
+                        "enum": [0, 1],
+                        "type": "integer",
+                        "description": "PD1E_FLGASSIST - In assistenza<br><ul><li><i>0</i> - No</li><li><i>1</i> - Si</li></ul>",
+                        "format": "int32",
+                        "default": "0",
+                        "nullable": true
+                    },
+                    "flgBlocco": {
+                        "enum": [0, 1],
+                        "type": "number",
+                        "description": "PD1E_FLGBLOCCO - Bloccato<br><ul><li><i>0</i> - No</li><li><i>1</i> - Si</li></ul>",
+                        "format": "double",
+                        "default": "0",
+                        "nullable": true
+                    },
+                    "flgChiuso": {
+                        "enum": [0, 1],
+                        "type": "integer",
+                        "description": "PD1E_FLGCHIUSO - Chiuso<br><ul><li><i>0</i> - No</li><li><i>1</i> - Si</li></ul>",
+                        "format": "int32",
+                        "default": "0",
+                        "nullable": true
+                    },
+                    "flgFattura": {
+                        "enum": [0, 1],
+                        "type": "number",
+                        "description": "PD1E_FLGFATTURA - Fatturabile<br><ul><li><i>0</i> - No</li><li><i>1</i> - Si</li></ul>",
+                        "format": "double",
+                        "default": "0",
+                        "nullable": true
+                    },
+                    "idprov": {
+                        "type": "integer",
+                        "description": "PD1E_IDPROV - IdProv (Required only in PUT/PATCH)",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "indStato": {
+                        "type": "number",
+                        "description": "PD1E_INDSTATO - IndStato",
+                        "format": "double"
+                    },
+                    "extensionData": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StringObjectKeyValuePair"
+                        },
+                        "nullable": true
+                    },
+                    "additionalData": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "PD1E_STATIPROGETTI - Stato progetto<br>Proprietà chiave:<ul><li><b>Codice</b></li><li><b>DittaCg18</b></li></ul>"
+            },
+            "ProjectTypePDDTO": {
+                "required": ["codice", "dittaCg18", "flgCespite", "indTipo"],
+                "type": "object",
+                "properties": {
+                    "codice": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "PD1D_CODICE - Codice Tipo"
+                    },
+                    "descr": {
+                        "type": "string",
+                        "description": "PD1D_DESCR - Descrizione",
+                        "nullable": true
+                    },
+                    "dittaCg18": {
+                        "type": "number",
+                        "description": "PD1D_DITTA_CG18 - Ditta",
+                        "format": "double"
+                    },
+                    "flgCespite": {
+                        "type": "number",
+                        "description": "PD1D_FLGCESPITE - Cespite",
+                        "format": "double"
+                    },
+                    "flgModello": {
+                        "enum": [0, 1],
+                        "type": "integer",
+                        "description": "PD1D_FLGMODELLO - Modello<br><ul><li><i>0</i> - No</li><li><i>1</i> - Si</li></ul>",
+                        "format": "int32",
+                        "default": "0",
+                        "nullable": true
+                    },
+                    "idEntityWithDescriptions": {
+                        "type": "integer",
+                        "description": "Id Entity + Descrizione",
+                        "format": "int32",
+                        "default": "3208",
+                        "nullable": true
+                    },
+                    "idprov": {
+                        "type": "integer",
+                        "description": "PD1D_IDPROV - IdProv (Required only in PUT/PATCH)",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "indTipo": {
+                        "type": "number",
+                        "description": "PD1D_INDTIPO - IndTipo",
+                        "format": "double"
+                    },
+                    "extensionData": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StringObjectKeyValuePair"
+                        },
+                        "nullable": true
+                    },
+                    "additionalData": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "PD1D_TIPIPROGETTI - Tipo progetto<br>Proprietà chiave:<ul><li><b>Codice</b></li><li><b>DittaCg18</b></li></ul>"
+            },
+            "SearchComparer": {
+                "enum": [0, 1, 10, 11, 12, 13, 20, 21, 30, 40, 50, 51, 60, 61, 70, 71],
+                "type": "integer",
+                "description": "Comparer operator: Equal = 0, NotEqual = 1, GreaterThan = 10, LessThan = 11, GreaterOrEqualThan = 12, LessOrEqualThan = 13, Contains = 20, NotContains = 21, StartsWith = 30, EndsWith = 40, In = 50, NotIn = 51, Between = 60, NotBetween = 61Null = 70NotNull = 71",
+                "format": "int32"
+            },
+            "SearchDTO": {
+                "type": "object",
+                "properties": {
+                    "filters": {
+                        "$ref": "#/components/schemas/SearchGroupDTO"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "description": "List of key value filters that will be applied to the query",
+                        "nullable": true
+                    },
+                    "orderingProperties": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "description": "\"Order by\" properties list",
+                        "format": "IDictionary<string, long>",
+                        "nullable": true
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "description": "Page number to retun",
+                        "format": "int32"
+                    },
+                    "pageNumber": {
+                        "type": "integer",
+                        "description": "Number of elements per page to return",
+                        "format": "int32"
+                    },
+                    "selectList": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "visibleColumns": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "idRow": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "DTO that contains the filter criteria"
+            },
+            "SearchElementDTO": {
+                "required": ["comparer", "propertyName", "value"],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/SearchNodeDTO"
+                    }
+                ],
+                "properties": {
+                    "propertyName": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "Property on witch apply the filter"
+                    },
+                    "comparer": {
+                        "$ref": "#/components/schemas/SearchComparer"
+                    },
+                    "value": {
+                        "$ref": "#/components/schemas/SearchNodeValueDTO"
+                    }
+                },
+                "additionalProperties": false,
+                "description": "DTO that identifies a search criteria"
+            },
+            "SearchGroupDTO": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/SearchNodeDTO"
+                    }
+                ],
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "oneOf": [
+                                {
+                                    "$ref": "#/components/schemas/SearchNodeDTO"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/SearchElementDTO"
+                                },
+                                {
+                                    "$ref": "#/components/schemas/SearchGroupDTO"
+                                }
+                            ],
+                            "description": "DTO that identifies a search criteria node (abstract)"
+                        },
+                        "description": "Items list to apply: any element can be a 'SearchGroupDTO' or a 'SearchElementDTO'",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "DTO that identifies a group of search criteria"
+            },
+            "SearchLogicalOperators": {
+                "enum": [0, 1, 2, 3],
+                "type": "integer",
+                "description": "Logical operator: And = 1, Or = 2, Not = 3",
+                "format": "int32"
+            },
+            "SearchNodeDTO": {
+                "type": "object",
+                "properties": {
+                    "operator": {
+                        "$ref": "#/components/schemas/SearchLogicalOperators"
+                    }
+                },
+                "additionalProperties": false,
+                "description": "DTO that identifies a search criteria node (abstract)"
+            },
+            "SearchNodeValueDTO": {
+                "type": "object",
+                "additionalProperties": false
+            },
+            "StringObjectKeyValuePair": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "value": {
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SubProjectPDDTO": {
+                "required": ["codProgPd68", "dittaCg18", "sotprog"],
+                "type": "object",
+                "properties": {
+                    "codCausCi03": {
+                        "type": "string",
+                        "description": "PD69_CODCAUS_CI03 - Causale contabilità analitica",
+                        "nullable": true
+                    },
+                    "codProgPd68": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "PD69_CODPROG_PD68 - Codice progetto"
+                    },
+                    "datacons": {
+                        "type": "string",
+                        "description": "PD69_DATACONS - Data consegna",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "dataini": {
+                        "type": "string",
+                        "description": "PD69_DATAINI - Data inizio",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "descrsotprog": {
+                        "type": "string",
+                        "description": "PD69_DESCRSOTPROG - Descrizione",
+                        "nullable": true
+                    },
+                    "dittaCg18": {
+                        "type": "number",
+                        "description": "PD69_DITTA_CG18 - Ditta",
+                        "format": "double"
+                    },
+                    "idmediaCg99": {
+                        "type": "number",
+                        "description": "PD69_IDMEDIA_CG99 - IdmediaCg99",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "note": {
+                        "type": "string",
+                        "description": "PD69_NOTE - Note",
+                        "nullable": true
+                    },
+                    "sotprog": {
+                        "type": "number",
+                        "description": "PD69_SOTPROG - Codice sottoprogetto",
+                        "format": "double"
+                    },
+                    "extensionData": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StringObjectKeyValuePair"
+                        },
+                        "nullable": true
+                    },
+                    "additionalData": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "PD69_SOTTOPROGETTI - SubProjectPD<br>Proprietà chiave:<ul><li><b>CodProgPd68</b></li><li><b>DittaCg18</b></li><li><b>Sotprog</b></li></ul>"
+            },
+            "ValidateDTO": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationResultDTO"
+                        },
+                        "nullable": true
+                    },
+                    "extensionData": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StringObjectKeyValuePair"
+                        },
+                        "nullable": true
+                    },
+                    "additionalData": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "DTO for data validation task"
+            },
+            "ValidationResultDTO": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "Validation message",
+                        "nullable": true
+                    },
+                    "warningCode": {
+                        "type": "integer",
+                        "format": "int64",
+                        "nullable": true
+                    },
+                    "isWarning": {
+                        "type": "boolean",
+                        "description": "It means the message is a warning"
+                    },
+                    "isError": {
+                        "type": "boolean",
+                        "description": "It means the message is an error"
+                    },
+                    "dtoName": {
+                        "type": "string",
+                        "description": "the DTO name who the property belong",
+                        "nullable": true
+                    },
+                    "dtoPropertyName": {
+                        "type": "string",
+                        "description": "The DTO invalid property name",
+                        "nullable": true
+                    },
+                    "entityPropertyPath": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "DTO for property validation task"
+            }
+        },
+        "securitySchemes": {
+            "Basic": {
+                "type": "http",
+                "description": "Basic Authorization header.",
+                "scheme": "Basic"
+            },
+            "Bearer": {
+                "type": "http",
+                "description": "Bearer Authorization header.\r\n\r\nEnter your token in the text input below.",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "security": [
+        {
+            "Basic": ["Basic"]
+        },
+        {
+            "Bearer": ["Bearer"]
+        }
+    ],
+    "tags": [
+        {
+            "name": "Progetto",
+            "description": "Collection of services for Projects"
+        }
+    ]
+}

@@ -1,0 +1,1748 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "TSEnterpriseWebApi - TS Enterprise Service layer",
+        "description": "WebApi Version Group: v1_IntegrationLI - 3 Endpoint",
+        "version": "v1_IntegrationLI"
+    },
+    "paths": {
+        "/api/v1/{environment}/LI/IEImportLI/pricelist": {
+            "post": {
+                "tags": ["IEImportLI"],
+                "summary": "Import price lists based on the required parameters",
+                "description": "Import price lists based on the required parameters",
+                "parameters": [
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Import price list parameters",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ImportParameterDTO"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ImportParameterDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "Import price lists result",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ImportExportResultDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ImportExportResultDTO"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "In case of errors in the business logic: the content of the response contains the validation messages produced",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidateDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/{environment}/LI/PriceParametricLI/search": {
+            "post": {
+                "tags": ["PriceParametricLI"],
+                "summary": "Search prices based on the required parameters",
+                "description": "Search prices based on the required parameters",
+                "parameters": [
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Price parametric parameters",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PriceParametricParametersDTO"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PriceParametricParametersDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "Price result",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PriceParametricLIDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PriceParametricLIDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "In case of errors in the business logic: the content of the response contains the validation messages produced"
+                    }
+                }
+            }
+        },
+        "/api/v1/{environment}/LI/PricePriorityLI/search": {
+            "post": {
+                "tags": ["PricePriorityLI"],
+                "summary": "Search prices based on the required parameters",
+                "description": "Search prices based on the required parameters",
+                "parameters": [
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Price priority parameters",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PricePriorityParametersDTO"
+                            }
+                        },
+                        "application/xml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PricePriorityParametersDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "Price result",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PricePriorityLIDTO"
+                                }
+                            },
+                            "application/xml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PricePriorityLIDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "In case of errors in the business logic: the content of the response contains the validation messages produced"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ImportExportHeadResultDTO": {
+                "type": "object",
+                "properties": {
+                    "guidResult": {
+                        "type": "string",
+                        "description": "Guid Result",
+                        "nullable": true
+                    },
+                    "totRowImpExp": {
+                        "type": "integer",
+                        "description": "total rows processed",
+                        "format": "int32"
+                    },
+                    "impExpWithErrors": {
+                        "type": "boolean",
+                        "description": "Import/Export with Error"
+                    },
+                    "rowElab": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ImportExportRowResultDTO"
+                        },
+                        "description": "Information/Error rows",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ImportExportResultDTO": {
+                "type": "object",
+                "properties": {
+                    "guidSession": {
+                        "type": "string",
+                        "description": "Guid Process",
+                        "nullable": true
+                    },
+                    "stateProcess": {
+                        "type": "string",
+                        "description": "State Process",
+                        "nullable": true
+                    },
+                    "idStateProcess": {
+                        "type": "integer",
+                        "description": "Id State Process",
+                        "format": "int64"
+                    },
+                    "headProcess": {
+                        "$ref": "#/components/schemas/ImportExportHeadResultDTO"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ImportExportRowResultDTO": {
+                "type": "object",
+                "properties": {
+                    "typeResult": {
+                        "type": "integer",
+                        "description": "Type Result",
+                        "format": "int32"
+                    },
+                    "typeResultDescription": {
+                        "type": "string",
+                        "description": "Type Result Description",
+                        "nullable": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ImportParameterDTO": {
+                "required": ["codLayout", "streamFileImport"],
+                "type": "object",
+                "properties": {
+                    "addParameters": {
+                        "$ref": "#/components/schemas/ImportPriceListParameterDTO"
+                    },
+                    "typeSalePurchase": {
+                        "minLength": 1,
+                        "enum": [0, 1],
+                        "type": "string",
+                        "description": "Type Sales/Purchases<br><ul><li><i>0</i> - Sale</li><li><i>1</i> - Purchase</li></ul>",
+                        "default": "0",
+                        "nullable": true
+                    },
+                    "isAsyncMode": {
+                        "type": "boolean",
+                        "description": "Asynchronous processing"
+                    },
+                    "codLayout": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "Code Layout"
+                    },
+                    "streamFileImport": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "Stream File Import"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ImportPriceListParameterDTO": {
+                "type": "object",
+                "properties": {
+                    "forceTypeInUseOrToExpect": {
+                        "enum": [0, 1, 2],
+                        "type": "string",
+                        "description": "Force indicator code In Use or Effective<br><ul><li><i>0</i> - From path</li><li><i>1</i> - In use</li><li><i>2</i> - As of</li></ul>",
+                        "default": "0",
+                        "nullable": true
+                    },
+                    "insertNewItem": {
+                        "type": "boolean",
+                        "description": "Insert new articles",
+                        "default": "false",
+                        "nullable": true
+                    },
+                    "updateExistingItem": {
+                        "type": "boolean",
+                        "description": "Update existing articles",
+                        "default": "false",
+                        "nullable": true
+                    },
+                    "forceBeginDate": {
+                        "type": "string",
+                        "description": "Force begin of validity date",
+                        "format": "date-time"
+                    },
+                    "forceEndDate": {
+                        "type": "string",
+                        "description": "Force end of validity date",
+                        "format": "date-time"
+                    },
+                    "dateUpdate": {
+                        "type": "string",
+                        "description": "Force update date",
+                        "format": "date-time"
+                    },
+                    "updateInsertPriceList": {
+                        "type": "boolean",
+                        "description": "Update or create period price lists",
+                        "default": "true",
+                        "nullable": true
+                    },
+                    "updatePriceList": {
+                        "type": "boolean",
+                        "description": "Update Price Lists included in the period (Update last update date and flag changed)",
+                        "default": "true",
+                        "nullable": true
+                    },
+                    "forceTypeUnitOfMeasure": {
+                        "enum": [1, 2, 3, 4, 5, 2],
+                        "type": "string",
+                        "description": "Force Type Unit of measurement<br><ul><li><i>1</i> - UM1 (All items)</li><li><i>2</i> - UM2 (All items)</li><li><i>3</i> - UM1 (new items only)</li><li><i>4</i> - UM2 (new items only)</li><li><i>5</i> - UMCF (All items) </li><li><i>2</i> - UMCF (new items only)</li></ul>",
+                        "default": "1",
+                        "nullable": true
+                    },
+                    "forceCodCurrency": {
+                        "type": "string",
+                        "description": "Force Currency code",
+                        "nullable": true
+                    },
+                    "forceCodCustomerSupplier": {
+                        "type": "number",
+                        "description": "Force Customer/Supplier code",
+                        "format": "double",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PriceParametricLIDTO": {
+                "required": ["indDimeRif", "indUMPre", "magImp", "magPer1", "magPer2", "prezzo", "prezzoConIva", "priceFound", "scImp", "scPer1", "scPer2", "scPer3", "scPer4", "scPer5", "scPer6"],
+                "type": "object",
+                "properties": {
+                    "indDimeRif": {
+                        "type": "integer",
+                        "description": "IndDimeRif",
+                        "format": "int32"
+                    },
+                    "indUMPre": {
+                        "type": "integer",
+                        "description": "IndUMPre",
+                        "format": "int32"
+                    },
+                    "magImp": {
+                        "type": "number",
+                        "description": "MagImp",
+                        "format": "double"
+                    },
+                    "magPer1": {
+                        "type": "number",
+                        "description": "MagPer1",
+                        "format": "double"
+                    },
+                    "magPer2": {
+                        "type": "number",
+                        "description": "MagPer2",
+                        "format": "double"
+                    },
+                    "prezzo": {
+                        "type": "number",
+                        "description": "Prezzo lordo 1",
+                        "format": "double"
+                    },
+                    "prezzoConIva": {
+                        "type": "integer",
+                        "description": "PrezzoConIva",
+                        "format": "int32"
+                    },
+                    "priceFound": {
+                        "type": "integer",
+                        "description": "PriceFound",
+                        "format": "int32"
+                    },
+                    "scImp": {
+                        "type": "number",
+                        "description": "Sconto importo",
+                        "format": "double"
+                    },
+                    "scPer1": {
+                        "type": "number",
+                        "description": "Sconto 1 percentuale",
+                        "format": "double"
+                    },
+                    "scPer2": {
+                        "type": "number",
+                        "description": "Sconto 2 percentuale",
+                        "format": "double"
+                    },
+                    "scPer3": {
+                        "type": "number",
+                        "description": "Sconto 3 percentuale",
+                        "format": "double"
+                    },
+                    "scPer4": {
+                        "type": "number",
+                        "description": "Sconto 4 percentuale",
+                        "format": "double"
+                    },
+                    "scPer5": {
+                        "type": "number",
+                        "description": "ScPer5",
+                        "format": "double"
+                    },
+                    "scPer6": {
+                        "type": "number",
+                        "description": "ScPer6",
+                        "format": "double"
+                    },
+                    "rowResultElab": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PriceParametricRowLIDTO"
+                        },
+                        "nullable": true
+                    },
+                    "extensionData": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StringObjectKeyValuePair"
+                        },
+                        "nullable": true
+                    },
+                    "additionalData": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "PriceParametricLI"
+            },
+            "PriceParametricParametersDTO": {
+                "required": ["codartMg66", "codTabPriority", "dataReg"],
+                "type": "object",
+                "properties": {
+                    "resultElab": {
+                        "type": "boolean",
+                        "description": "Attivazione Esito elaborazione listini parametrici",
+                        "default": "false"
+                    },
+                    "codTabPriority": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "Codice Tabella priorità"
+                    },
+                    "dataReg": {
+                        "type": "string",
+                        "description": "Data registazione",
+                        "format": "date-time"
+                    },
+                    "dataDoc": {
+                        "type": "string",
+                        "description": "Data documento",
+                        "format": "date-time"
+                    },
+                    "codartMg66": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "Codice articolo"
+                    },
+                    "tipocfCg44": {
+                        "type": "number",
+                        "description": "Tipo Cliente/Fornitore: 0=Cliente - 1=Fornitore",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "cliforCg44": {
+                        "type": "number",
+                        "description": "Codice Cliente/Fornitore",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "cliForDest": {
+                        "type": "string",
+                        "description": "Destinazione diversa Cliente/Fornitore",
+                        "nullable": true
+                    },
+                    "opzioneMg5e": {
+                        "type": "string",
+                        "description": "Opzione variante articolo",
+                        "default": "",
+                        "nullable": true
+                    },
+                    "codiceVar": {
+                        "type": "string",
+                        "description": "Codice variante",
+                        "nullable": true
+                    },
+                    "codConfezMg96": {
+                        "type": "string",
+                        "description": "Codice confezione",
+                        "nullable": true
+                    },
+                    "valutaCg08": {
+                        "type": "string",
+                        "description": "VALUTA_CG08 - Codice Valuta default EURO",
+                        "default": "EURO",
+                        "nullable": true
+                    },
+                    "cambio": {
+                        "type": "number",
+                        "description": "Cambio",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "dataCons": {
+                        "type": "string",
+                        "description": "Data consegna",
+                        "format": "date-time"
+                    },
+                    "dataRichiesta": {
+                        "type": "string",
+                        "description": "Data richiesta",
+                        "format": "date-time"
+                    },
+                    "dataConsConf": {
+                        "type": "string",
+                        "description": "Data consegna confermata",
+                        "format": "date-time"
+                    },
+                    "documentData": {
+                        "$ref": "#/components/schemas/PriceParametricParametersDocumentDTO"
+                    },
+                    "projectData": {
+                        "$ref": "#/components/schemas/PriceParametricParametersProjectDTO"
+                    },
+                    "productionData": {
+                        "$ref": "#/components/schemas/PriceParametricParametersProductionDTO"
+                    }
+                },
+                "additionalProperties": false,
+                "description": "PriceParametricParametersDTO"
+            },
+            "PriceParametricParametersDocumentDTO": {
+                "type": "object",
+                "properties": {
+                    "codSedeCg31": {
+                        "type": "number",
+                        "description": "DO11_CODSEDE_CG31 - Codice Sede",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "tipoDoc": {
+                        "type": "number",
+                        "description": "DO11_TIPODOC - Tipo documento",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "stipoDoc": {
+                        "type": "number",
+                        "description": "DO11_STIPODOC - Sottotipo documento",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "documMg36": {
+                        "type": "string",
+                        "description": "DO11_DOCUM_MG36 - Codice documento",
+                        "nullable": true
+                    },
+                    "sezDoc": {
+                        "type": "string",
+                        "description": "DO11_SEZDOC - Sezionale documento",
+                        "nullable": true
+                    },
+                    "codPagCg62": {
+                        "type": "string",
+                        "description": "DO11_CODPAG_CG62 - Condizione di Pagamento",
+                        "nullable": true
+                    },
+                    "codTipoSpedMg93": {
+                        "type": "string",
+                        "description": "DO14_CODTIPOSPED_MG93 - Codice Tipo Spedizione",
+                        "nullable": true
+                    },
+                    "codPortoMg91": {
+                        "type": "string",
+                        "description": "DO14_CODPORTO_MG91 - Codice Porto",
+                        "nullable": true
+                    },
+                    "codImballoMg95": {
+                        "type": "string",
+                        "description": "DO14_CODIMBALLO_MG95 - Codice Imballo",
+                        "nullable": true
+                    },
+                    "codAspettoMg99": {
+                        "type": "string",
+                        "description": "DO14_CODASPETTO_MG99 - Codice Aspetto Beni",
+                        "nullable": true
+                    },
+                    "codCauTraspMg13": {
+                        "type": "string",
+                        "description": "DO14_CODCAUTRASP_MG13 - Codice Causale trasporto",
+                        "nullable": true
+                    },
+                    "vettore1Mg14": {
+                        "type": "string",
+                        "description": "DO14_VETTORE1_MG14 - Vettore1",
+                        "nullable": true
+                    },
+                    "vettore2Mg14": {
+                        "type": "string",
+                        "description": "DO14_VETTORE2_MG14 - Vettore2",
+                        "nullable": true
+                    },
+                    "idagenteMg17": {
+                        "type": "integer",
+                        "description": "DO21_IDAGENTE_MG17 - Codice Agente",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "cliforfatt": {
+                        "type": "number",
+                        "description": "DO11_CLIFORFATT - Codice Fornitore fattura",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "listmag": {
+                        "type": "number",
+                        "description": "DO11_LISTMAG - Listino anagrafico",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "coddepMg58": {
+                        "type": "string",
+                        "description": "DO30_CODDEP_MG58 - Codice deposito di riga",
+                        "nullable": true
+                    },
+                    "qta1": {
+                        "type": "number",
+                        "description": "DO30_QTA1 - Quantità 1 di riga",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "qta2": {
+                        "type": "number",
+                        "description": "DO30_QTA2 -Quantità 2 di riga",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "stagioneMg5t": {
+                        "type": "integer",
+                        "description": "DO30_STAGIONE_MG5T - Stagione di riga",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "lineaFa05": {
+                        "type": "string",
+                        "description": "DO30_LINEA_FA05 - Codice Linea di riga",
+                        "nullable": true
+                    },
+                    "colli": {
+                        "type": "number",
+                        "description": "DO30_COLLI - Colli di riga",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "pesoN": {
+                        "type": "number",
+                        "description": "DO30_PESOL - Peso netto di riga",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "pesoL": {
+                        "type": "number",
+                        "description": "DO30_COLLI - Peso Lordo di riga",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "volume": {
+                        "type": "number",
+                        "description": "DO30_VOLUME - Volume di riga",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "codArtCli": {
+                        "type": "string",
+                        "description": "DO30_CODARTCLI - Codice Articolo Cliente di riga",
+                        "nullable": true
+                    },
+                    "codArtFor": {
+                        "type": "string",
+                        "description": "DO30_CODARTFOR - Codice Articolo Fornitore di riga",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "DocumentData"
+            },
+            "PriceParametricParametersProductionDTO": {
+                "type": "object",
+                "properties": {
+                    "codFase": {
+                        "type": "number",
+                        "description": "DO46_CODFASE - Codice Fase",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "codReparto": {
+                        "type": "string",
+                        "description": "DO46_CODREPARTO - Codice Reparto",
+                        "nullable": true
+                    },
+                    "codFornitore": {
+                        "type": "number",
+                        "description": "DO46_CLIFOR_CG44 - Codice Fornitore",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "codMacchina": {
+                        "type": "string",
+                        "description": "DO46_MACCHINAALT - Codice Macchina",
+                        "nullable": true
+                    },
+                    "codAttrezzoPd26": {
+                        "type": "string",
+                        "description": "DO46_ATTREZZO_PD26 - Codice Attrezzo",
+                        "nullable": true
+                    },
+                    "varianteAttrezzoPd26": {
+                        "type": "string",
+                        "description": "DO46_VARATTR_PD26 - Variante Attrezzo",
+                        "nullable": true
+                    },
+                    "codKitPd56": {
+                        "type": "string",
+                        "description": "DO46_KITATT_PD56 - Kit",
+                        "nullable": true
+                    },
+                    "tempoLav": {
+                        "type": "number",
+                        "description": "DO46_TEMPOLAV - Tempo di fase(hhhhh.mm.ss)",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "codQualificaPd2a": {
+                        "type": "string",
+                        "description": "PD2B_CODQUAL_PD2A - Codice qualifica",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "Production"
+            },
+            "PriceParametricParametersProjectDTO": {
+                "type": "object",
+                "properties": {
+                    "codProgetto": {
+                        "type": "string",
+                        "description": "DO41_CODPROGETTO - Codice Progetto",
+                        "nullable": true
+                    },
+                    "codSprogetto": {
+                        "type": "number",
+                        "description": "DO41_CODSPROGETTO - Codice SottoProgetto",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "codCommessa": {
+                        "type": "string",
+                        "description": "DO41_CODCOMMESSA - Codice Commessa",
+                        "nullable": true
+                    },
+                    "codScommessa": {
+                        "type": "number",
+                        "description": "DO41_CODSCOMMESSA - Codice SottoCommessa",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "nodoPd0c": {
+                        "type": "string",
+                        "description": "DO41_NODO_PD0C - Nodo",
+                        "nullable": true
+                    },
+                    "attivitaPd0d": {
+                        "type": "string",
+                        "description": "DO41_ ATTIVITA_PD0D - Attività",
+                        "nullable": true
+                    },
+                    "spesaPd64": {
+                        "type": "string",
+                        "description": "DO41_ DO41_SPESA_PD64 - Codice spesa",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "ProjectData"
+            },
+            "PriceParametricRowLIDTO": {
+                "required": ["codConfList", "desConfList", "fromQty", "idConfListLp01", "idQuotazioneLp07", "idScontiLp08", "indState", "indType", "indTypeOper", "magImp", "magPer1", "magPer2", "numProg", "prezzo", "prezzoNetto", "prezzoNettoDiff", "scImp", "scPer1", "scPer2", "scPer3", "scPer4", "scPer5", "scPer6", "toQty"],
+                "type": "object",
+                "properties": {
+                    "codartMg66": {
+                        "type": "string",
+                        "description": "CodartMg66",
+                        "nullable": true
+                    },
+                    "codConfList": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "CodConfList"
+                    },
+                    "dateEndVal": {
+                        "type": "string",
+                        "description": "DateEndVal",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "dateStartVal": {
+                        "type": "string",
+                        "description": "DateStartVal",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "desConfList": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "DesConfList"
+                    },
+                    "desTypeOper": {
+                        "type": "string",
+                        "description": "DesTypeOper",
+                        "nullable": true
+                    },
+                    "fromQty": {
+                        "type": "number",
+                        "description": "FromQty",
+                        "format": "double"
+                    },
+                    "idConfListLp01": {
+                        "type": "number",
+                        "description": "IdConfListLp01",
+                        "format": "double"
+                    },
+                    "idQuotazioneLp07": {
+                        "type": "number",
+                        "description": "IdQuotazioneLp07",
+                        "format": "double"
+                    },
+                    "idScontiLp08": {
+                        "type": "number",
+                        "description": "IdScontiLp08",
+                        "format": "double"
+                    },
+                    "indState": {
+                        "type": "number",
+                        "description": "IndState",
+                        "format": "double"
+                    },
+                    "indType": {
+                        "type": "integer",
+                        "description": "IndType",
+                        "format": "int32"
+                    },
+                    "indTypeOper": {
+                        "type": "integer",
+                        "description": "IndTypeOper",
+                        "format": "int32"
+                    },
+                    "magImp": {
+                        "type": "number",
+                        "description": "MagImp",
+                        "format": "double"
+                    },
+                    "magPer1": {
+                        "type": "number",
+                        "description": "MagPer1",
+                        "format": "double"
+                    },
+                    "magPer2": {
+                        "type": "number",
+                        "description": "MagPer2",
+                        "format": "double"
+                    },
+                    "numProg": {
+                        "type": "number",
+                        "description": "NumProg",
+                        "format": "double"
+                    },
+                    "prezzo": {
+                        "type": "number",
+                        "description": "Prezzo lordo 1",
+                        "format": "double"
+                    },
+                    "prezzoNetto": {
+                        "type": "number",
+                        "description": "PrezzoNetto",
+                        "format": "double"
+                    },
+                    "prezzoNettoDiff": {
+                        "type": "number",
+                        "description": "PrezzoNettoDiff",
+                        "format": "double"
+                    },
+                    "scImp": {
+                        "type": "number",
+                        "description": "Sconto importo",
+                        "format": "double"
+                    },
+                    "scPer1": {
+                        "type": "number",
+                        "description": "Sconto 1 percentuale",
+                        "format": "double"
+                    },
+                    "scPer2": {
+                        "type": "number",
+                        "description": "Sconto 2 percentuale",
+                        "format": "double"
+                    },
+                    "scPer3": {
+                        "type": "number",
+                        "description": "Sconto 3 percentuale",
+                        "format": "double"
+                    },
+                    "scPer4": {
+                        "type": "number",
+                        "description": "Sconto 4 percentuale",
+                        "format": "double"
+                    },
+                    "scPer5": {
+                        "type": "number",
+                        "description": "ScPer5",
+                        "format": "double"
+                    },
+                    "scPer6": {
+                        "type": "number",
+                        "description": "ScPer6",
+                        "format": "double"
+                    },
+                    "toQty": {
+                        "type": "number",
+                        "description": "ToQty",
+                        "format": "double"
+                    },
+                    "extensionData": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StringObjectKeyValuePair"
+                        },
+                        "nullable": true
+                    },
+                    "additionalData": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "PriceParametricRowLI"
+            },
+            "PricePriorityLIDTO": {
+                "required": ["scPer1"],
+                "type": "object",
+                "properties": {
+                    "additionalCost1": {
+                        "type": "number",
+                        "description": "AdditionalCost1",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "additionalCost2": {
+                        "type": "number",
+                        "description": "AdditionalCost2",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "codArtCampMg94": {
+                        "type": "string",
+                        "description": "CodArtCampMg94",
+                        "nullable": true
+                    },
+                    "customApplication": {
+                        "type": "number",
+                        "description": "Indicatore 1 Appl.Pers",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "dateCreatePriceList": {
+                        "type": "string",
+                        "description": "Data fine validità",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "datePrintList": {
+                        "type": "string",
+                        "description": "Data stampa listino",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "dateUpdatePriceList": {
+                        "type": "string",
+                        "description": "Data fine validità",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "freeValue": {
+                        "type": "number",
+                        "description": "Valore libero",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "fromQty": {
+                        "type": "number",
+                        "description": "FromQty",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "magImp": {
+                        "type": "number",
+                        "description": "MagImp",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "magPer1": {
+                        "type": "number",
+                        "description": "MagPer1",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "magPer2": {
+                        "type": "number",
+                        "description": "MagPer2",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "note": {
+                        "type": "string",
+                        "description": "Note",
+                        "nullable": true
+                    },
+                    "numPagePrintList": {
+                        "type": "number",
+                        "description": "Numero di pagina del listino",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "numPriceList": {
+                        "type": "number",
+                        "description": "Numero listino",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "prezzo1": {
+                        "type": "number",
+                        "description": "Prezzo lordo 1",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "prezzo2": {
+                        "type": "number",
+                        "description": "Prezzo lordo 1",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "prezzoCF": {
+                        "type": "number",
+                        "description": "Prezzo lordo 1",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "prezzoConIva": {
+                        "type": "number",
+                        "description": "PrezzoConIva",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "prezzoNetto1": {
+                        "type": "number",
+                        "description": "PrezzoNetto1",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "prezzoNetto2": {
+                        "type": "number",
+                        "description": "PrezzoNetto2",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "prezzoNettoCF": {
+                        "type": "number",
+                        "description": "PrezzoNettoCF",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "scImp": {
+                        "type": "number",
+                        "description": "Sconto importo",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "scPer1": {
+                        "type": "number",
+                        "description": "Sconto 1 percentuale",
+                        "format": "double"
+                    },
+                    "scPer2": {
+                        "type": "number",
+                        "description": "Sconto 2 percentuale",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "scPer3": {
+                        "type": "number",
+                        "description": "Sconto 3 percentuale",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "scPer4": {
+                        "type": "number",
+                        "description": "Sconto 4 percentuale",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "scPer5": {
+                        "type": "number",
+                        "description": "ScPer5",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "scPer6": {
+                        "type": "number",
+                        "description": "ScPer6",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "stateProc": {
+                        "type": "number",
+                        "description": "Stato",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "toQty": {
+                        "type": "number",
+                        "description": "ToQty",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "typePriceListElab": {
+                        "type": "integer",
+                        "description": "TypePriceListElab",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "typeUM": {
+                        "type": "integer",
+                        "description": "TypeUM",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "typeUpdatePriceList": {
+                        "type": "number",
+                        "description": "Aggiornamento listino",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "updatePriceList": {
+                        "type": "number",
+                        "description": "Flag listino variato",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "rowElaboratePrices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PricePriorityRowLIDTO"
+                        },
+                        "nullable": true
+                    },
+                    "extensionData": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StringObjectKeyValuePair"
+                        },
+                        "nullable": true
+                    },
+                    "additionalData": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "PricePriorityLI"
+            },
+            "PricePriorityParametersDTO": {
+                "required": ["codArtMg66", "dateElab"],
+                "type": "object",
+                "properties": {
+                    "typeSalePurchaseProd": {
+                        "type": "number",
+                        "description": "Tipo Prezzo: 0=Vendite (default) - 1=Acquisti - 2=Produzione - (DO11_TIPOCF_CG44/2)",
+                        "format": "double"
+                    },
+                    "codArtMg66": {
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "Codice articolo - DO30_CODART_MG66"
+                    },
+                    "cliforCg44": {
+                        "type": "number",
+                        "description": "Codice Cliente/Fornitore - DO11_CLIFOR_CG44",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "dateElab": {
+                        "type": "string",
+                        "description": "Data documento o data registrazione",
+                        "format": "date-time"
+                    },
+                    "qty1": {
+                        "type": "number",
+                        "description": "Quantità 1 (di riga) - DO30_QTA1",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "qty2": {
+                        "type": "number",
+                        "description": "Quantità 2 (di riga) - DO30_QTA2",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "qtyCF": {
+                        "type": "number",
+                        "description": "Quantità CF (di riga) - DO30_QTACF",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "numPriceList": {
+                        "type": "number",
+                        "description": "Numero Listino - DO11_LISTMAG",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "codDepMg58": {
+                        "type": "string",
+                        "description": "Codice Deposito - DO30_CODDEP_MG58",
+                        "nullable": true
+                    },
+                    "opzioneMg5e": {
+                        "type": "string",
+                        "description": "Opzione variante - DO30_OPZIONE_MG5E",
+                        "nullable": true
+                    },
+                    "inUseOrStarting": {
+                        "type": "integer",
+                        "description": "Tipo listino  0=In Uso (default)  1=A Decorrere",
+                        "format": "int32"
+                    },
+                    "cliForDest": {
+                        "type": "string",
+                        "description": "Destinazione diversa Cliente/Fornitore - DO11_CLIFORDEST",
+                        "nullable": true
+                    },
+                    "codArtCliFor": {
+                        "type": "string",
+                        "description": "Codice Articolo Cliente/Fornitore - DO30_CODARTCLI/DO30_CODARTFOR",
+                        "nullable": true
+                    },
+                    "valutaCg08": {
+                        "type": "string",
+                        "description": "Codice Valuta default EURO - DO11_VALUTA_CG08",
+                        "default": "EURO",
+                        "nullable": true
+                    },
+                    "cambio": {
+                        "type": "number",
+                        "description": "Cambio - DO11_CAMBIO",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "numFixedPriceList": {
+                        "type": "number",
+                        "description": "Numero Listino fisso",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "resultElaboratePriceList": {
+                        "type": "boolean",
+                        "description": "Attivazione visualizzazione elenco dei prezzi elaborati",
+                        "default": "false"
+                    }
+                },
+                "additionalProperties": false,
+                "description": "PricePriorityParametersDTO"
+            },
+            "PricePriorityRowLIDTO": {
+                "required": ["idPriceList"],
+                "type": "object",
+                "properties": {
+                    "additionalCost1": {
+                        "type": "number",
+                        "description": "AdditionalCost1",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "additionalCost2": {
+                        "type": "number",
+                        "description": "AdditionalCost2",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "currencyCodeCg08": {
+                        "type": "string",
+                        "description": "CurrencyCodeCg08",
+                        "nullable": true
+                    },
+                    "currencyDescription": {
+                        "type": "string",
+                        "description": "CurrencyDescription",
+                        "nullable": true
+                    },
+                    "dateUpdatePriceList": {
+                        "type": "string",
+                        "description": "Data fine validità",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description",
+                        "nullable": true
+                    },
+                    "desKey": {
+                        "type": "string",
+                        "description": "DesKey",
+                        "nullable": true
+                    },
+                    "desTypePriceList": {
+                        "type": "string",
+                        "description": "DesTypePriceList",
+                        "nullable": true
+                    },
+                    "fromQty": {
+                        "type": "number",
+                        "description": "FromQty",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "idPriceList": {
+                        "type": "integer",
+                        "description": "IdPriceList",
+                        "format": "int64"
+                    },
+                    "magImp": {
+                        "type": "number",
+                        "description": "MagImp",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "magPer1": {
+                        "type": "number",
+                        "description": "MagPer1",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "magPer2": {
+                        "type": "number",
+                        "description": "MagPer2",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "prezzo1": {
+                        "type": "number",
+                        "description": "Prezzo lordo 1",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "prezzo2": {
+                        "type": "number",
+                        "description": "Prezzo lordo 1",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "prezzoCF": {
+                        "type": "number",
+                        "description": "Prezzo lordo 1",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "prezzoNetto1": {
+                        "type": "number",
+                        "description": "PrezzoNetto1",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "prezzoNetto2": {
+                        "type": "number",
+                        "description": "PrezzoNetto2",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "prezzoNettoCF": {
+                        "type": "number",
+                        "description": "PrezzoNettoCF",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "scImp": {
+                        "type": "number",
+                        "description": "Sconto importo",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "scPer1": {
+                        "type": "number",
+                        "description": "Sconto 1 percentuale",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "scPer2": {
+                        "type": "number",
+                        "description": "Sconto 2 percentuale",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "scPer3": {
+                        "type": "number",
+                        "description": "Sconto 3 percentuale",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "scPer4": {
+                        "type": "number",
+                        "description": "Sconto 4 percentuale",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "scPer5": {
+                        "type": "number",
+                        "description": "ScPer5",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "scPer6": {
+                        "type": "number",
+                        "description": "ScPer6",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "toQty": {
+                        "type": "number",
+                        "description": "ToQty",
+                        "format": "double",
+                        "nullable": true
+                    },
+                    "typePriceList": {
+                        "type": "integer",
+                        "description": "TypePriceList",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "extensionData": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StringObjectKeyValuePair"
+                        },
+                        "nullable": true
+                    },
+                    "additionalData": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "PricePriorityRowLI<br>Proprietà chiave:<ul><li><b>IdPriceList</b></li></ul>"
+            },
+            "StringObjectKeyValuePair": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "value": {
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ValidateDTO": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationResultDTO"
+                        },
+                        "nullable": true
+                    },
+                    "extensionData": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StringObjectKeyValuePair"
+                        },
+                        "nullable": true
+                    },
+                    "additionalData": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "DTO for data validation task"
+            },
+            "ValidationResultDTO": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "Validation message",
+                        "nullable": true
+                    },
+                    "warningCode": {
+                        "type": "integer",
+                        "format": "int64",
+                        "nullable": true
+                    },
+                    "isWarning": {
+                        "type": "boolean",
+                        "description": "It means the message is a warning"
+                    },
+                    "isError": {
+                        "type": "boolean",
+                        "description": "It means the message is an error"
+                    },
+                    "dtoName": {
+                        "type": "string",
+                        "description": "the DTO name who the property belong",
+                        "nullable": true
+                    },
+                    "dtoPropertyName": {
+                        "type": "string",
+                        "description": "The DTO invalid property name",
+                        "nullable": true
+                    },
+                    "entityPropertyPath": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false,
+                "description": "DTO for property validation task"
+            }
+        },
+        "securitySchemes": {
+            "Basic": {
+                "type": "http",
+                "description": "Basic Authorization header.",
+                "scheme": "Basic"
+            },
+            "Bearer": {
+                "type": "http",
+                "description": "Bearer Authorization header.\r\n\r\nEnter your token in the text input below.",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "security": [
+        {
+            "Basic": ["Basic"]
+        },
+        {
+            "Bearer": ["Bearer"]
+        }
+    ],
+    "tags": [
+        {
+            "name": "IEImportLI",
+            "description": "Service for importing Price Lists"
+        },
+        {
+            "name": "PriceParametricLI",
+            "description": "Service for reading Parametric Prices"
+        },
+        {
+            "name": "PricePriorityLI",
+            "description": "Service for reading Priority Prices"
+        }
+    ]
+}

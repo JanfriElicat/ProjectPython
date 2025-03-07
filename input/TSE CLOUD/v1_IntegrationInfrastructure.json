@@ -1,0 +1,339 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "TSEnterpriseWebApi - TS Enterprise Service layer",
+        "description": "WebApi Version Group: v1_IntegrationInfrastructure - 3 Endpoint",
+        "version": "v1_IntegrationInfrastructure"
+    },
+    "paths": {
+        "/api/v1/{environment}/FW/Lookup": {
+            "get": {
+                "tags": ["Lookup"],
+                "summary": "Lookup database list",
+                "description": "Retrieve lookup database list",
+                "parameters": [
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "Retrieve lookup database list"
+                    }
+                }
+            }
+        },
+        "/api/v1/{environment}/{moduleAcron}/Lookup/{lookupName}": {
+            "get": {
+                "tags": ["Lookup"],
+                "summary": "Get lookup data",
+                "description": "Retrieve details of the specified lookup. Use this endpoint to get lookup data without a complex filter or filterless.",
+                "parameters": [
+                    {
+                        "name": "moduleAcron",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lookupName",
+                        "in": "path",
+                        "description": "Lookup's name",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "in": "query",
+                        "description": "Allows you to get lookup's metadata structure.",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "description": "Page number to return.",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "Define the number of elements per page to return.",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "(optional parameter) Text filter to apply. Will be applied to key and description properties of DTO.",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "Lookup data (optionally lookup metadata structure) of specified lookup"
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Lookup"],
+                "summary": "Post lookup data",
+                "description": "Retrieve details of the specified look up. Use this endpoint when you want apply a complex filter",
+                "parameters": [
+                    {
+                        "name": "moduleAcron",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lookupName",
+                        "in": "path",
+                        "description": "Lookup's name",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environment",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "_op",
+                        "in": "query",
+                        "description": "Set the value to 'search' or 'fulltextsearch' to enable advanced features",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "in": "query",
+                        "description": "Allows you to get lookup's metadata structure.",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization-Scope",
+                        "in": "header",
+                        "description": "The environment where this operation will be executed. This must match with the environment in the url.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company code",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "Application user (mandatory if the WebApi user does not have any mapped application user)",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "description": "Example for multilanguage",
+                        "style": "simple",
+                        "schema": {
+                            "enum": ["it-IT", "en-GB"],
+                            "type": "string",
+                            "default": "it-IT"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Lookup filters",
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        },
+                        "application/xml": {
+                            "schema": {}
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized access"
+                    },
+                    "403": {
+                        "description": "Forbidden access"
+                    },
+                    "200": {
+                        "description": "Lookup data (optionally lookup metadata structure) of specified lookup"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "Basic": {
+                "type": "http",
+                "description": "Basic Authorization header.",
+                "scheme": "Basic"
+            },
+            "Bearer": {
+                "type": "http",
+                "description": "Bearer Authorization header.\r\n\r\nEnter your token in the text input below.",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "security": [
+        {
+            "Basic": ["Basic"]
+        },
+        {
+            "Bearer": ["Bearer"]
+        }
+    ]
+}
