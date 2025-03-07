@@ -1,4 +1,4 @@
-Insieme di pilloi progetti in Python
+Insieme di tools e/o piccoli progetti in Python
 
 # json Swagger into Execl file
 Il progetto leggiJsonCreaExecl.py serve per leggere una folder con dei Json estrapolati dalla documentazione swagger e migrarli in un file excel
