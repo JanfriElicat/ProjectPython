@@ -18,3 +18,11 @@ git clone https://github.com/JanfriElicat/ProjectPython.git
 
 ## Uso
 ```leggiJsonCreaExecl.py
+
+
+
+## Autori
+- Gianfranco Facchini - [GitHub](https://github.com/JanfriElicat)
+
+## Licenza
+Questo progetto è distribuito sotto la licenza MIT. Vedi il file [LICENSE](https://appmaster.io/it/glossary/licenza-mit) per maggiori dettagli.
