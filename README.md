@@ -6,6 +6,10 @@ Nello caso specifico è servito per confrontare le API du due ambienti diversi.
 Può essere una bona base per chi avesse bisogno di trasformare dati json in dati excel
 
 ## Versione usata
+3.7.9
+
+## dependenze 
+pandas
 
 ## Installazione
 1. Clona il repository:
